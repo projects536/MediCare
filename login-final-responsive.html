@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MASSS</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/ds20dwlrs/image/upload/v1753886991/logo_M-Photoroom_p1rofe.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #146A5D;
+            --primary-dark: #0d4a40;
+            --secondary-color: #f8f9fa;
+            --text-dark: #333;
+            --white: #ffffff;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .container {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transition: all 0.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sign-in-container {
+            left: 0;
+            z-index: 2;
+        }
+
+        .sign-up-container {
+            left: 0;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+            pointer-events: auto;
+            animation: show 0.6s;
+        }
+
+        @keyframes show {
+            0%, 49.99% { opacity: 0; z-index: 1; }
+            50%, 100% { opacity: 1; z-index: 5; }
+        }
+
+        form {
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 700;
+            margin: 0 0 2rem;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 1rem;
+            z-index: 10;
+        }
+
+        input, select {
+            background-color: #f5f5f5;
+            border: 2px solid transparent;
+            padding: 16px 20px 16px 50px;
+            width: 100%;
+            border-radius: var(--border-radius);
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        input:focus, select:focus {
+            background-color: var(--white);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(20, 106, 93, 0.1);
+        }
+
+        input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            color: #999;
+        }
+
+        select:focus, select:valid {
+            color: var(--text-dark);
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        button {
+            border-radius: var(--border-radius);
+            border: none;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 16px 40px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(20, 106, 93, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.ghost {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        button.ghost:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .form-link {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin: 1rem 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .form-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .overlay {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 3rem;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-left {
+            transform: translateX(-20%);
+        }
+
+        .container.right-panel-active .overlay-left {
+            transform: translateX(0);
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+        }
+
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+
+        .overlay-panel h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-panel p {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            margin: 1rem 0 2rem;
+            opacity: 0.9;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            color: var(--primary-color);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-height: 50px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                min-height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+                flex-direction: column;
+            }
+
+            .form-container {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                transform: none !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                z-index: 1 !important;
+            }
+
+            .sign-in-container {
+                display: block;
+            }
+
+            .sign-up-container {
+                display: none;
+                opacity: 1;
+                z-index: 1;
+            }
+
+            .container.right-panel-active .sign-in-container {
+                display: none;
+            }
+
+            .container.right-panel-active .sign-up-container {
+                display: flex;
+            }
+
+            .overlay-container {
+                display: none;
+            }
+
+            form {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .input-group {
+                margin-bottom: 1.2rem;
+            }
+
+            input, select {
+                padding: 18px 20px 18px 50px;
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 18px 40px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .mobile-toggle {
+                display: block;
+                margin-top: 1.5rem;
+                color: var(--primary-color);
+                font-weight: 600;
+                cursor: pointer;
+                font-size: 0.95rem;
+            }
+
+            .back-to-home {
+                top: 15px;
+                left: 15px;
+                font-size: 0.9rem;
+            }
+
+            .form-message {
+                margin-top: 1.5rem;
+                font-size: 0.95rem;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            input, select {
+                padding: 16px 18px 16px 45px;
+                font-size: 0.95rem;
+            }
+
+            .input-group i {
+                left: 15px;
+                font-size: 0.9rem;
+            }
+
+            .select-wrapper::after {
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+    
+    <div class="container" id="container">
+        <!-- Sign Up Form -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h1>Create Account</h1>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="signUpName" placeholder="Full Name" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signUpEmail" placeholder="Email Address" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="signUpPassword" placeholder="Password" required />
+                </div>
+                <div class="input-group select-wrapper">
+                    <i class="fas fa-user-tag"></i>
+                    <select id="signUpRole" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit">Create Account</button>
+                <div id="signUpMessage" class="form-message"></div>
+                <a class="form-link mobile-toggle" id="signInMobile">Already have an account? Sign In</a>
+            </form>
+        </div>
+
+        <!-- Sign In Form -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h1>Welcome Back</h1>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signInEmail" placeholder="Email Address" required/>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="signInPassword" placeholder="Password" required/>
+                </div>
+                <a href="#" class="form-link">Forgot your password?</a>
+                <button type="submit">Sign In</button>
+                <div id="signInMessage" class="form-message"></div>
+                <a class="form-link mobile-toggle" id="signUpMobile">Don't have an account? Sign Up</a>
+            </form>
+        </div>
+
+        <!-- Overlay for Desktop -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal information</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+
+        // --- Firebase Initialization ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAhrIvIo5TLdtlEhfYVXZINkldatgTyFnk",
+            authDomain: "masss-fc334.firebaseapp.com",
+            projectId: "masss-fc334",
+            storageBucket: "masss-fc334.appspot.com",
+            messagingSenderId: "183224613508",
+            appId: "1:183224613508:web:4faecf537190c2f1c620d1",
+            measurementId: "G-37SXV44CT1"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const analytics = getAnalytics(app);
+
+        // --- UI Element Event Listeners ---
+        const container = document.getElementById('container');
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const signUpMobileButton = document.getElementById('signUpMobile');
+        const signInMobileButton = document.getElementById('signInMobile');
+
+        const signInForm = document.getElementById('signInForm');
+        const signUpForm = document.getElementById('signUpForm');
+        const signInMessage = document.getElementById('signInMessage');
+        const signUpMessage = document.getElementById('signUpMessage');
+
+        if (signUpButton) signUpButton.addEventListener('click', () => container.classList.add('right-panel-active'));
+        if (signInButton) signInButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+        if (signUpMobileButton) signUpMobileButton.addEventListener('click', () => container.classList.add('right-panel-active'));
+        if (signInMobileButton) signInMobileButton.addEventListener('click', () => container.classList.remove('right-panel-active'));
+
+        // --- Form Submission Logic ---
+
+        // Sign Up
+        signUpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signUpName').value.trim();
+            const email = document.getElementById('signUpEmail').value.trim();
+            const password = document.getElementById('signUpPassword').value;
+            const role = document.getElementById('signUpRole').value;
+
+            signUpMessage.innerHTML = '<div class="loader"></div>';
+            signUpMessage.className = 'form-message';
+
+            try {
+                // 1. Create user with Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // 2. Store user details in Firestore
+                const userDocRef = doc(db, `users/${user.uid}`);
+                await setDoc(userDocRef, {
+                    name: name,
+                    email: email,
+                    role: role,
+                    createdAt: new Date()
+                });
+
+                signUpMessage.textContent = `Account for ${name} (${role}) created successfully!`;
+                signUpMessage.className = 'form-message success';
+                signUpForm.reset();
+
+            } catch (error) {
+                console.error("Sign up error:", error);
+                let friendlyMessage = "Failed to create account. Please try again.";
+                if (error.code === 'auth/email-already-in-use') {
+                    friendlyMessage = "This email address is already in use.";
+                } else if (error.code === 'auth/weak-password') {
+                    friendlyMessage = "Password should be at least 6 characters.";
+                }
+                signUpMessage.textContent = friendlyMessage;
+                signUpMessage.className = 'form-message error';
+            }
+        });
+
+        // Sign In
+        signInForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signInEmail').value.trim();
+            const password = document.getElementById('signInPassword').value;
+
+            signInMessage.innerHTML = '<div class="loader"></div>';
+            signInMessage.className = 'form-message';
+
+            try {
+                // 1. Sign in user with Firebase Auth
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // 2. Get user role from Firestore
+                const userDocRef = doc(db, `users/${user.uid}`);
+                const docSnap = await getDoc(userDocRef);
+
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    const role = userData.role;
+                    
+                    signInMessage.textContent = `Login successful! Welcome, ${userData.name}. Redirecting to your ${role} dashboard...`;
+                    signInMessage.className = 'form-message success';
+
+                    // 3. Redirect to the appropriate dashboard (simulation)
+                    setTimeout(() => {
+                        // In a real app, you would redirect:
+                        // window.location.href = `${role}-dashboard.html`;
+                        console.log(`Redirecting to ${role}-dashboard.html`);
+                    }, 2000);
+
+                } else {
+                    throw new Error("User data not found in database.");
+                }
+
+            } catch (error) {
+                console.error("Sign in error:", error);
+                let friendlyMessage = "Invalid email or password. Please try again.";
+                 if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                    friendlyMessage = "Invalid email or password. Please try again.";
+                }
+                signInMessage.textContent = friendlyMessage;
+                signInMessage.className = 'form-message error';
+            }
+        });
+    </script>
+</body>
+</html>
