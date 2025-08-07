@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Living Secrets - MASSS</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/ds20dwlrs/image/upload/v1753886991/logo_M-Photoroom_p1rofe.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #146A5D; /* The new greenish theme color */
+            --primary-dark: #0d4a40; /* A darker shade for contrast */
+            --secondary-color: #f0f4f7; /* A light, calm background color */
+            --text-dark: #212529;
+            --text-light: #495057;
+            --white: #ffffff;
+            --light-green: #e9f5ef; /* A soft, earthy green */
+            --calm-grey: #f8f9fa;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--calm-grey);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            animation: slideInLeft 1s ease-out;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover .logo-img {
+            transform: rotate(-10deg) scale(1.05);
+        }
+
+        .nav-container {
+            display: none; 
+        }
+
+        @media (min-width: 992px) {
+            .nav-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                animation: slideInRight 1s ease-out;
+                flex-grow: 1;
+                justify-content: flex-end;
+            }
+            .nav-container .search-bar {
+                flex-grow: 1;
+                max-width: 400px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 991px) {
+            .nav-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.65rem 2.5rem 0.65rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            outline: none;
+            width: 85%;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            height: 42px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            width: 30px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.65rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            white-space: nowrap;
+            height: 42px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .nav-btn i {
+            margin-right: 0.25rem;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow);
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        
+        .md-hidden {
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .md-hidden {
+                display: none;
+            }
+        }
+        
+        .hamburger {
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          transition: all 0.25s;
+          position: relative;
+          background: transparent;
+          border: none;
+        }
+
+        .hamburger-top,
+        .hamburger-middle,
+        .hamburger-bottom {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 24px;
+          height: 2px;
+          background: #fff;
+          transform: rotate(0);
+          transition: all 0.5s;
+        }
+
+        .hamburger-middle {
+          transform: translateY(7px);
+        }
+
+        .hamburger-bottom {
+          transform: translateY(14px);
+        }
+
+        .open .hamburger-top {
+          transform: rotate(45deg) translateY(6px) translateX(6px);
+        }
+
+        .open .hamburger-middle {
+          display: none;
+        }
+
+        .open .hamburger-bottom {
+          transform: rotate(-45deg) translateY(6px) translateX(-6px);
+        }
+        
+        .mobile-menu {
+            background-color: var(--primary-dark);
+            padding: 1.5rem;
+            border-top: 1px solid var(--primary-light);
+        }
+        
+        .mobile-menu .search-bar {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mobile-menu .search-input {
+            padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+            font-size: 1.1rem;
+        }
+        
+        .mobile-menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .mobile-menu-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .mobile-menu-buttons .nav-btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .search-icon-btn {
+            display: none;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 2rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+        .search-dropdown .search-input {
+            background: #f0f0f0;
+            color: var(--text-dark);
+            border: 1px solid #ddd;
+        }
+        .search-dropdown .search-input::placeholder {
+            color: #999;
+        }
+        .search-dropdown .search-btn {
+            color: var(--primary-color);
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .nav-container .search-bar {
+                display: none;
+            }
+            .search-icon-btn {
+                display: flex;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(20, 106, 93, 0.7); /* Adjusted to new theme color */
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        .back-to-home:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        .back-to-home i {
+            font-size: 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://awegene.com/wp-content/uploads/2022/11/Healthy-Life-Expectancy.jpg') no-repeat center center/cover;
+            color: var(--white);
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .hero .cta-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .pillars-section {
+            background-color: var(--white);
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .pillar-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .tips-section .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .tip-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tip-card i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+        }
+
+        .tip-card-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .diseases-section {
+            background-color: var(--light-green);
+        }
+
+        .disease-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .accordion-header .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .accordion-header .icon-title i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .accordion-header i.fa-chevron-down {
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            padding: 0 2rem;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            overflow: hidden;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content h5 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accordion-content ul {
+            padding-left: 20px;
+        }
+        
+        .accordion-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: #ccc;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .accordion-header {
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .accordion-content {
+                padding: 1rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="https://res.cloudinary.com/ds20dwlrs/image/upload/v1753886991/logo_M-Photoroom_p1rofe.png" alt="MASSS Logo" class="logo-img">
+                <span>MASSS</span>
+            </a>
+            <nav class="nav-container">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search for doctors, services...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="nav-buttons">
+                    <button id="search-icon-btn" class="nav-btn search-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="#chat" class="nav-btn">
+                        <i class="fas fa-comments"></i> Chat
+                    </a>
+                    <a href="login.html" class="nav-btn login-btn-link">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <div class="user-avatar hidden">
+                        JD
+                        <div class="dropdown">
+                            <a href="#profile" class="dropdown-item"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                            <a href="#" class="dropdown-item logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="md-hidden">
+                <button id="mobile-menu-button" class="hamburger">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Search Dropdown -->
+        <div id="search-dropdown" class="hidden search-dropdown">
+             <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search for doctors, services...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden mobile-menu">
+             <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search for doctors, services...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="mobile-menu-nav">
+                <div class="mobile-menu-buttons">
+                    <a href="#chat" class="nav-btn">
+                        <i class="fas fa-comments"></i> Chat
+                    </a>
+                    <a href="login.html" class="nav-btn login-btn-link">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </div>
+                 <div class="user-avatar hidden mx-auto">
+                    JD
+                    <div class="dropdown" id="userDropdownMobile">
+                        <a href="#profile" class="dropdown-item"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                        <a href="#" class="dropdown-item logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Unlock the Secrets to a Healthier, Happier You</h1>
+            <p>Discover simple, actionable habits for a vibrant and balanced life. Your journey to well-being starts here.</p>
+            <a href="#pillars" class="cta-button">Start Your Journey</a>
+        </div>
+    </div>
+
+    <section id="pillars" class="pillars-section">
+        <div class="container">
+            <h2 class="section-title">The Pillars of Healthy Living</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Balanced Nutrition</h3>
+                    <p>Fuel your body with a diverse range of foods. Focus on whole grains, lean proteins, fruits, and vegetables to thrive.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Regular Exercise</h3>
+                    <p>Keep your body moving to boost energy, strengthen muscles, and improve mental clarity. Find an activity you love!</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Quality Sleep</h3>
+                    <p>Prioritize 7-9 hours of restful sleep each night to allow your body and mind to repair and rejuvenate.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Stress Management</h3>
+                    <p>Incorporate mindfulness, meditation, or quiet time to manage stress and cultivate a calm, resilient mind.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Hydration</h3>
+                    <p>Drink plenty of water throughout the day. Staying hydrated is key for optimal bodily function and energy levels.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-heart-pulse"></i>
+                    <h3>Preventive Care</h3>
+                    <p>Schedule regular health check-ups and screenings to monitor your well-being and catch potential issues early.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-smile-beam"></i>
+                    <h3>Mental Wellness</h3>
+                    <p>Nurture your mental and emotional health. Practice gratitude, engage in hobbies, and seek support when needed.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Social Connection</h3>
+                    <p>Maintain strong relationships with family and friends. Social bonds contribute significantly to happiness and longevity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="secrets" class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Actionable Healthy Living Secrets</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <div class="tip-card-content">
+                        <h4>Eat a Rainbow</h4>
+                        <p>Incorporate a variety of colorful fruits and vegetables into your diet daily to get a wide range of vitamins and minerals.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <div class="tip-card-content">
+                        <h4>Get Some Sun</h4>
+                        <p>Spend at least 15-20 minutes outdoors each day to boost your mood and get a healthy dose of Vitamin D.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-walking"></i>
+                    <div class="tip-card-content">
+                        <h4>Take a Walk</h4>
+                        <p>Even a short, brisk walk of 30 minutes can improve cardiovascular health and reduce stress levels.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="tip-card-content">
+                        <h4>Practice Mindful Eating</h4>
+                        <p>Pay attention to your food and chew slowly to improve digestion and better recognize your body's fullness cues.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-seedling"></i>
+                    <div class="tip-card-content">
+                        <h4>Connect with Nature</h4>
+                        <p>Spending time in green spaces can significantly reduce stress and improve mental well-being. Go on a hike or visit a park.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-users"></i>
+                    <div class="tip-card-content">
+                        <h4>Nurture Relationships</h4>
+                        <p>Maintain strong social bonds. Connecting with friends and family is crucial for emotional health and a sense of belonging.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-mug-hot"></i>
+                    <div class="tip-card-content">
+                        <h4>Limit Caffeine & Alcohol</h4>
+                        <p>Moderate your intake of caffeine and alcohol to improve sleep quality and reduce stress on your body.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-book"></i>
+                    <div class="tip-card-content">
+                        <h4>Read a Book</h4>
+                        <p>Swap screen time for a good book before bed to help your mind wind down and prepare for sleep.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diseases" class="diseases-section">
+        <div class="container">
+            <h2 class="section-title">Common Diseases & Remedies</h2>
+            <div class="disease-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>1. Hypertension (High Blood Pressure)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Hypertension is a condition where the force of the blood against your artery walls is too high. It often has no symptoms but can lead to serious health problems like heart disease and stroke.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Dietary Changes:</strong> Reduce sodium intake. Focus on a diet rich in potassium, found in foods like bananas and spinach.</li>
+                            <li><strong>Exercise:</strong> Regular aerobic exercise like brisk walking, jogging, or cycling can significantly lower blood pressure.</li>
+                            <li><strong>Limit Alcohol & Caffeine:</strong> Excessive consumption can raise blood pressure.</li>
+                            <li><strong>Stress Reduction:</strong> Practice relaxation techniques such as meditation and yoga.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-sugar"></i>
+                            <span>2. Diabetes Mellitus</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Diabetes is a chronic disease that occurs either when the pancreas does not produce enough insulin or when the body cannot effectively use the insulin it produces. This leads to high blood sugar levels.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Balanced Diet:</strong> Limit sugary and processed foods. Opt for whole grains, high-fiber foods, and vegetables.</li>
+                            <li><strong>Maintain a Healthy Weight:</strong> Losing even a small amount of weight can improve insulin sensitivity.</li>
+                            <li><strong>Regular Exercise:</strong> Physical activity helps control blood sugar levels and manage weight.</li>
+                            <li><strong>Medication:</strong> Follow your doctor's prescribed medication plan, which may include insulin therapy.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-weight"></i>
+                            <span>3. Obesity</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Obesity is a complex disease involving an excessive amount of body fat. It increases the risk of other health problems, including heart disease, diabetes, and certain types of cancer.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Calorie Management:</strong> Create a moderate calorie deficit through a balanced diet.</li>
+                            <li><strong>Physical Activity:</strong> Aim for at least 150 minutes of moderate-intensity exercise per week.</li>
+                            <li><strong>Mindful Eating:</strong> Pay attention to portion sizes and eat slowly to recognize fullness cues.</li>
+                            <li><strong>Behavioral Support:</strong> Counseling and support groups can help in developing sustainable habits.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-lungs"></i>
+                            <span>4. Asthma</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Asthma is a chronic disease of the airways that makes breathing difficult. It causes inflammation of the air passages that lead to the lungs, making them temporarily narrow.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Identify Triggers:</strong> Recognize and avoid common triggers like pollen, dust mites, or pet dander.</li>
+                            <li><strong>Medication:</strong> Use prescribed inhalers and medications as directed by your doctor.</li>
+                            <li><strong>Exercise:</strong> With proper management, exercise can strengthen your lungs. Talk to your doctor about an appropriate plan.</li>
+                            <li><strong>Breathing Exercises:</strong> Techniques like Buteyko can help improve breathing patterns.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>5. Arthritis</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Arthritis is inflammation of one or more joints, causing pain and stiffness that can worsen with age. There are several types, including osteoarthritis and rheumatoid arthritis.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Low-Impact Exercise:</strong> Engage in activities like swimming or walking to keep joints flexible without putting too much strain on them.</li>
+                            <li><strong>Diet:</strong> Anti-inflammatory foods like fatty fish, nuts, and leafy greens can help manage symptoms.</li>
+                            <li><strong>Maintain a Healthy Weight:</strong> Excess weight puts stress on joints, especially the knees and hips.</li>
+                            <li><strong>Physical Therapy:</strong> A physical therapist can help you develop a personalized exercise routine to strengthen muscles around the joints.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-brain"></i>
+                            <span>6. Depression & Anxiety</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Depression and anxiety are common mental health disorders that can affect how you feel, think, and handle daily activities. They are more than just temporary feelings of sadness or worry.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Therapy:</strong> Cognitive Behavioral Therapy (CBT) and other forms of counseling are highly effective.</li>
+                            <li><strong>Exercise:</strong> Regular physical activity is a proven mood booster and stress reducer.</li>
+                            <li><strong>Mindfulness & Meditation:</strong> These practices can help you focus on the present and reduce intrusive thoughts.</li>
+                            <li><strong>Social Connection:</strong> Don't isolate yourself. Spend time with loved ones and engage in hobbies you enjoy.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-head-side-mask"></i>
+                            <span>7. Migraine</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>A migraine is a severe headache often accompanied by symptoms such as nausea, vomiting, and extreme sensitivity to light and sound. It can be debilitating and last for hours or even days.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Identify Triggers:</strong> Keep a journal to pinpoint triggers like certain foods, stress, or lack of sleep.</li>
+                            <li><strong>Stress Management:</strong> Practice relaxation techniques to reduce the frequency and severity of attacks.</li>
+                            <li><strong>Medication:</strong> Over-the-counter pain relievers or prescription medications can help manage symptoms.</li>
+                            <li><strong>Healthy Habits:</strong> Maintain a regular sleep schedule, stay hydrated, and eat regular meals.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-tooth"></i>
+                            <span>8. Periodontal Disease (Gum Disease)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Periodontal disease is a serious gum infection that damages the soft tissue and bone that support the teeth. If left untreated, it can lead to tooth loss and other health complications.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Oral Hygiene:</strong> Brush your teeth at least twice a day and floss daily.</li>
+                            <li><strong>Regular Dental Checkups:</strong> Visit your dentist for professional cleanings and checkups every 6 months.</li>
+                            <li><strong>Healthy Diet:</strong> Limit sugary foods and drinks that can contribute to plaque buildup.</li>
+                            <li><strong>Quit Smoking:</strong> Smoking is a significant risk factor for gum disease.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-stomach"></i>
+                            <span>9. Irritable Bowel Syndrome (IBS)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>IBS is a common disorder that affects the large intestine. Symptoms include cramping, abdominal pain, bloating, gas, and diarrhea or constipation.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Dietary Adjustments:</strong> Identify and avoid trigger foods. A low-FODMAP diet may be recommended.</li>
+                            <li><strong>Stress Reduction:</strong> Stress can worsen symptoms. Practice mindfulness or meditation.</li>
+                            <li><strong>Fiber Intake:</strong> Gradually increase your intake of soluble fiber, found in oats and beans.</li>
+                            <li><strong>Probiotics:</strong> Probiotic supplements or foods like yogurt can help balance gut bacteria.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-hand-dots"></i>
+                            <span>10. Eczema (Atopic Dermatitis)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Eczema is a condition that makes your skin red and itchy. It is a chronic condition that can flare up periodically and then subside.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Moisturize Daily:</strong> Use a high-quality moisturizer to keep your skin hydrated.</li>
+                            <li><strong>Avoid Irritants:</strong> Steer clear of harsh soaps, detergents, and fabrics that can irritate your skin.</li>
+                            <li><strong>Manage Stress:</strong> Stress can trigger eczema flare-ups. Engage in relaxing activities.</li>
+                            <li><strong>Cooler Showers:</strong> Use lukewarm water instead of hot water, as hot water can dry out your skin.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-ear-deaf"></i>
+                            <span>11. Tinnitus</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Tinnitus is the perception of noise or ringing in the ears. It is not a disease itself but a symptom of an underlying condition, such as age-related hearing loss or a circulatory system disorder.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Sound Therapy:</strong> Use white noise machines, fans, or special hearing aids to mask the sound.</li>
+                            <li><strong>Avoid Loud Noise:</strong> Protect your ears with earplugs in noisy environments.</li>
+                            <li><strong>Limit Caffeine & Alcohol:</strong> These can affect blood flow and potentially worsen symptoms.</li>
+                            <li><strong>Stress Management:</strong> High stress levels can exacerbate tinnitus.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-eye-slash"></i>
+                            <span>12. Glaucoma</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Glaucoma is a group of eye conditions that damage the optic nerve, often caused by abnormally high pressure in your eye. It is one of the leading causes of blindness in people over 60.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Regular Eye Exams:</strong> Early detection is key. Get comprehensive eye exams regularly.</li>
+                            <li><strong>Medication:</strong> Follow your doctor's prescribed eye drops to lower eye pressure.</li>
+                            <li><strong>Exercise:</strong> Moderate exercise may reduce eye pressure.</li>
+                            <li><strong>Healthy Diet:</strong> A diet rich in antioxidants can support eye health.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-th-list"></i>
+                            <span>13. Chronic Kidney Disease (CKD)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>CKD is a gradual loss of kidney function. The kidneys filter wastes and excess fluids from your blood, which are then excreted in your urine.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Manage Blood Pressure & Diabetes:</strong> These are the two leading causes of CKD.</li>
+                            <li><strong>Healthy Diet:</strong> Follow a low-sodium, low-protein diet as advised by your doctor.</li>
+                            <li><strong>Hydration:</strong> Drink adequate water, but consult a doctor to avoid over-hydration if you have advanced CKD.</li>
+                            <li><strong>Quit Smoking:</strong> Smoking can worsen kidney damage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-virus"></i>
+                            <span>14. Common Cold & Flu</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The common cold and flu are viral infections of the nose and throat. The flu is often more severe than a cold and can lead to serious complications.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Rest:</strong> Allow your body to recover.</li>
+                            <li><strong>Stay Hydrated:</strong> Drink plenty of water and clear fluids.</li>
+                            <li><strong>Hand Hygiene:</strong> Wash your hands frequently to prevent the spread of germs.</li>
+                            <li><strong>Flu Vaccine:</strong> Get an annual flu shot to protect yourself and those around you.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-bone"></i>
+                            <span>15. Osteoporosis</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Osteoporosis is a condition that causes bones to become weak and brittle. This makes them susceptible to fractures from a minor fall or even mild stresses.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Calcium & Vitamin D:</strong> Ensure an adequate intake of these nutrients through diet or supplements.</li>
+                            <li><strong>Weight-Bearing Exercise:</strong> Activities like walking, jogging, and weight training strengthen bones.</li>
+                            <li><strong>Avoid Smoking & Alcohol:</strong> These habits can reduce bone density.</li>
+                            <li><strong>Medication:</strong> Bisphosphonates and other medications may be prescribed to slow bone loss.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-heart-crack"></i>
+                            <span>16. Coronary Artery Disease</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>This disease is caused by plaque buildup in the arteries that supply blood to the heart, which can lead to a heart attack. It is the most common type of heart disease.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Heart-Healthy Diet:</strong> Consume foods low in saturated and trans fats. Eat more fruits, vegetables, and whole grains.</li>
+                            <li><strong>No Smoking:</strong> Quitting smoking is one of the most effective ways to reduce your risk.</li>
+                            <li><strong>Manage Cholesterol:</strong> Keep your cholesterol levels in check through diet, exercise, and, if necessary, medication.</li>
+                            <li><strong>Regular Exercise:</strong> Consistent physical activity strengthens the heart and improves circulation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-memory"></i>
+                            <span>17. Alzheimer's Disease</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Alzheimer's is a progressive disease that destroys memory and other important mental functions. It is the most common cause of dementia.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Mental Stimulation:</strong> Stay mentally active with puzzles, reading, or learning new skills.</li>
+                            <li><strong>Physical Exercise:</strong> Regular physical activity may help protect brain cells.</li>
+                            <li><strong>Social Engagement:</strong> Maintain an active social life to support cognitive health.</li>
+                            <li><strong>Healthy Diet:</strong> A diet rich in omega-3 fatty acids and antioxidants may be beneficial.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-shield-virus"></i>
+                            <span>18. HIV/AIDS</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>HIV (Human Immunodeficiency Virus) is a virus that attacks the body's immune system. AIDS is the late stage of HIV infection that occurs when the body's immune system is badly damaged.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Antiretroviral Therapy (ART):</strong> This treatment can control the virus, allowing people with HIV to live long, healthy lives.</li>
+                            <li><strong>Safe Practices:</strong> Use condoms consistently and correctly.</li>
+                            <li><strong>PrEP (Pre-Exposure Prophylaxis):</strong> This medication can prevent HIV in high-risk individuals.</li>
+                            <li><strong>Regular Testing:</strong> Get tested regularly to know your status and seek early treatment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-pills"></i>
+                            <span>19. Anemia</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Anemia is a condition in which you don't have enough healthy red blood cells to carry adequate oxygen to your body's tissues. It can make you feel tired and weak.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Iron-Rich Diet:</strong> Eat foods like red meat, poultry, beans, and leafy green vegetables.</li>
+                            <li><strong>Vitamin C:</strong> Vitamin C helps your body absorb iron. Consume citrus fruits and bell peppers.</li>
+                            <li><strong>Supplements:</strong> Iron or vitamin supplements may be necessary.</li>
+                            <li><strong>Identify Underlying Causes:</strong> Anemia can be a symptom of other conditions, so a doctor's diagnosis is important.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-head-side-cough"></i>
+                            <span>20. Chronic Obstructive Pulmonary Disease (COPD)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>COPD is a chronic inflammatory lung disease that causes obstructed airflow from the lungs. Symptoms include breathing difficulty, cough, mucus production, and wheezing.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Quit Smoking:</strong> This is the most important step to prevent and manage COPD.</li>
+                            <li><strong>Medication:</strong> Bronchodilators and steroids can help manage symptoms and prevent flare-ups.</li>
+                            <li><strong>Pulmonary Rehabilitation:</strong> This program includes exercise training, disease management, and nutritional counseling.</li>
+                            <li><strong>Avoid Air Pollutants:</strong> Reduce exposure to dust, chemical fumes, and secondhand smoke.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>21. Food Allergies</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>A food allergy is an immune system reaction that occurs shortly after eating a certain food. Even a tiny amount of the allergy-causing food can trigger signs and symptoms.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Avoid Triggers:</strong> The primary remedy is to completely avoid the food that causes the allergy.</li>
+                            <li><strong>Read Labels:</strong> Carefully check food labels for potential allergens.</li>
+                            <li><strong>Epinephrine:</strong> Carry an epinephrine auto-injector (EpiPen) for severe reactions as prescribed by a doctor.</li>
+                            <li><strong>Communicate:</strong> Inform restaurant staff and others about your allergy to ensure your food is safe.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-thermometer"></i>
+                            <span>22. Fever</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Fever is a temporary increase in your body temperature, often due to an illness. It is a sign that your body is fighting off an infection.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Rest:</strong> Get plenty of rest to help your body fight the infection.</li>
+                            <li><strong>Hydration:</strong> Drink water, herbal tea, or electrolyte drinks to prevent dehydration.</li>
+                            <li><strong>Over-the-Counter Medication:</strong> Medications like acetaminophen or ibuprofen can help lower the fever.</li>
+                            <li><strong>Lukewarm Bath:</strong> A lukewarm bath can help cool the body.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-walking"></i>
+                            <span>23. Gout</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Gout is a painful form of inflammatory arthritis caused by an excess of uric acid in the bloodstream. It can cause sudden, severe attacks of pain and swelling in the joints, most often the big toe.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Dietary Management:</strong> Avoid purine-rich foods like red meat, organ meats, and some seafood.</li>
+                            <li><strong>Limit Alcohol:</strong> Especially beer and liquor, which can increase uric acid levels.</li>
+                            <li><strong>Stay Hydrated:</strong> Drinking plenty of water helps flush uric acid from your body.</li>
+                            <li><strong>Medication:</strong> Your doctor may prescribe medications to lower uric acid levels and manage acute attacks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-hand-holding-medical"></i>
+                            <span>24. Hepatitis</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Hepatitis is an inflammation of the liver, most commonly caused by a viral infection. There are several types, including Hepatitis A, B, and C.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Vaccination:</strong> Vaccines are available for Hepatitis A and B.</li>
+                            <li><strong>Safe Practices:</strong> Practice safe sex and avoid sharing needles to prevent the spread of B and C.</li>
+                            <li><strong>Hygiene:</strong> Wash your hands thoroughly, especially before preparing food, to prevent Hepatitis A.</li>
+                            <li><strong>Antiviral Medication:</strong> Your doctor may prescribe medication to treat chronic Hepatitis B and C.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="icon-title">
+                            <i class="fas fa-ear"></i>
+                            <span>25. Otitis Media (Ear Infection)</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>An ear infection is an inflammation of the middle ear, usually caused by a bacteria or virus. It often occurs as a result of another illness, such as a cold, flu, or allergy.</p>
+                        <h5>Remedies & Prevention:</h5>
+                        <ul>
+                            <li><strong>Pain Relievers:</strong> Over-the-counter pain relievers can help manage discomfort.</li>
+                            <li><strong>Warm Compress:</strong> Applying a warm, wet cloth to the affected ear may provide relief.</li>
+                            <li><strong>Medical Treatment:</strong> Antibiotics may be prescribed if the infection is bacterial.</li>
+                            <li><strong>Preventative Measures:</strong> Wash hands frequently and avoid smoking to reduce the risk of respiratory infections that can lead to ear infections.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 MASSS HealthCare Portal. All rights reserved.</p>
+        <p>Providing quality healthcare services with compassion and expertise.</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+
+                    // Close all other open accordion items
+                    document.querySelectorAll('.accordion-header.active').forEach(openHeader => {
+                        if (openHeader !== header) {
+                            openHeader.classList.remove('active');
+                            openHeader.nextElementSibling.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle the clicked item
+                    header.classList.toggle('active');
+                    content.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
